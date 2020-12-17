@@ -7,12 +7,16 @@
 #' @return List of client_data, client_auth & client_model with publicId key
 #'
 #' @example
-#' client_data_1 <- list(
-#'   client_id = "client_id",
-#'   client_secret = "client_secret"
+#' client_data_1 = list(
+#'   client_id = "b7ea9f90-9b6c-41e1-8aa8-449ec5a3c1f8",
+#'   client_secret = "1f48ae74-0a5d-4c95-991e-57d4eea42238"
 #' )
-#' init_app(clients_data = list(client_data_1))
-#'
+#' client_data_2 = list(
+#'   client_id = "e249df6c-d9ef-4cc3-9f97-bf7f51426f2c",
+#'   client_secret = "de53faf5-c583-4828-ac11-e13baff9b139"
+#' )
+#' clients_data <-build_client(clients_data = list(client_data_1, client_data_2))
+
 build_client <- function(clients_data, cfg = config()) {
 
   result <- list()
