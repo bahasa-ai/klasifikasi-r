@@ -3,9 +3,13 @@
 Official [Klasifikasi](https://klasifikasi.com/) API Client Library
 
 ## Requirements
+
 R >= 3.6.3
+
 ## Installation
+
 You can install it with devtools
+
 ```R
 devtools::install_github("bahasa-ai/klasifikasi-r")
 ```
@@ -24,6 +28,7 @@ clients_data <-klasifikasi::build(clients_data = list(
 ))
 
 ```
+
 You can pass multiple `clientId` & `clientSecret` too
 
 ```R
@@ -47,13 +52,17 @@ clients_data <-klasifikasi::build(clients_data = list(
 #'  ....$ client_data: List of 2
 #'  ....$ client_auth: List of 2
 #'  ....$ client_model: List of 12
-#' 
+#'
 ```
 
 ## Classify
-You will need you model `publicId` to start classifying with your model. You can get your model `publicId` from your model page or you can get it from return variable of `build()` function, in previous case, from `clients_data` variable
+
+You will need you model `publicId` to start classifying with your model. You can
+get your model `publicId` from your model page or you can get it from return
+variable of `build()` function, in previous case, from `clients_data` variable
 
 Classifying example
+
 ```R
 result <- klasifikasi::classify("publicId", clients_data[["publicId"]], "query")
 #' result will be look like this
@@ -67,7 +76,9 @@ result <- klasifikasi::classify("publicId", clients_data[["publicId"]], "query")
 ```
 
 ## Logs
+
 You can get your classifying logs based on your model `publicId`
+
 ```R
 result_logs <- klasifikasi::logs(
   "publicId",
@@ -90,14 +101,21 @@ result_logs <- klasifikasi::logs(
 #' ........$ :List of 2
 #' ..........$ label: chr "tag 1"
 #' ..........$ score: num 0.551
-#' ........$ :List of 
+#' ........$ :List of
 #' ..........$ label: chr "tag 2"
 #' ..........$ score: num 0.23
 #' ....$: List of 6
-#' ..$ length: int n 
+#' ..$ length: int n
 ```
-`started_at` & `ended_at` param is mandatory but `skip` & `take`  is optional. Please note, `started_at` & `ended_at` param must be a valid date string (We recommend using ISO 8601 Format)
+
+`started_at` & `ended_at` param is mandatory but `skip` & `take` is optional.
+Please note, `started_at` & `ended_at` param must be a valid date string (We
+recommend using ISO 8601 Format)
 
 ## Error
+
 All the function above will trigger `stop()` if something bad happen.
+
+```
+
 ```
