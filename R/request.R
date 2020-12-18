@@ -63,3 +63,24 @@ get_classifying_result <- function(client_token, public_id, query, cfg) {
 
   return (list( body = response_body, code = response_code ))
 }
+
+#' Get model logs
+#'
+#' Use this function get classifying logs from a model
+#' @param client_token client token, created by [build()[['publicId']]$client_auth$token]
+#' @param public_id public id model
+#' @param query_string list of query string in url
+#' @param cfg list of package options, created by [config()]
+#' @export
+#'
+get_logs <- function(client_token, public_id, list_query, cfg) {
+  url <- cfg['url']
+  fullUrl <- paste(url, "/api/v1/history/", public_id, sep = "")
+  auth <- paste("Bearer", client_token, sep=" ")
+
+  r <- httr::GET(fullUrl, httr::add_headers(Authorization = auth), query = list_query)
+  response_body <- httr::content(r, "parsed")
+  response_code <- httr::status_code(r)
+
+  return (list( body = response_body, code = response_code ))
+}
