@@ -5,12 +5,7 @@
 #'@param client_data list of clientId & clientSecret
 #'@param cfg list of package options, created by created by [config()]
 #'@export
-#'@examples
-#'client_data = list(
-#'  clientId = 'clientid',
-#'  clientSecret = 'clientSecret
-#')
-#'client_token <- request_token(client_data, config())
+#'
 request_token <- function(client_data, cfg) {
   url <- cfg['url']
   fullUrl <- paste(url, "/api/v1/auth/token", sep="")
@@ -26,7 +21,7 @@ request_token <- function(client_data, cfg) {
 #'
 #' Use this function to get model data based on client token
 #' @param client_token client token, created by [request_token()$body]
-#' @cfg list of package options, created by [config()]
+#' @param cfg list of package options, created by [config()]
 #' @export
 #'
 get_model_data <- function (client_token, cfg) {
@@ -47,7 +42,7 @@ get_model_data <- function (client_token, cfg) {
 #' @param client_token client token, created by [build()[['publicId']]$client_auth$token]
 #' @param public_id public id model
 #' @param query query
-#' @cfg list of package options, created by [config()]
+#' @param cfg list of package options, created by [config()]
 #' @export
 #'
 get_classifying_result <- function(client_token, public_id, query, cfg) {
