@@ -6,16 +6,17 @@
 #' @export
 #' @return List of client_data, client_auth & client_model with publicId key
 #'
-#' @example
-#' client_data_1 = list(
-#'   client_id = "client-id-1",
-#'   client_secret = "client-secret-1"
-#' )
-#' client_data_2 = list(
-#'   client_id = "client-id-2",
-#'   client_secret = "client-secret-2"
-#' )
-#' clients_data <-build(clients_data = list(client_data_1, client_data_2))
+#' @examples
+#' clients_data <-build(clients_data = list(
+#'   list(
+#'     client_id = "client-id-1",
+#'     client_secret = "client-secret-1"
+#'   ),
+#'   list(
+#'     client_id = "client-id-2",
+#'     client_secret = "client-secret-2"
+#'   )
+#' ))
 
 build <- function(clients_data, cfg = config()) {
 
@@ -58,8 +59,11 @@ build <- function(clients_data, cfg = config()) {
 #' @export
 #' @return list of tag result
 #'
-#' @example
-#' result <- classify('publicId', clients_data[["publicId"]], "query")
+#' @examples
+#' result <- classify(
+#'   "publicId",
+#'   clients_data[["publicId"]],
+#'   "query")
 #'
 classify <- function (public_id, client_list, query, cfg = config()) {
   if (is.null(client_list)) {
@@ -83,14 +87,14 @@ classify <- function (public_id, client_list, query, cfg = config()) {
 #' @param cfg list of package options, created by created by [config()]
 #' @param started_at Date with 8601 format
 #' @param ended_at Date with 8601 format
-#' @param skip
-#' @param take
+#' @param skip skip n data from DB
+#' @param take take n data from DB
+#'
 #' @export
 #' @return list of model logs
 #'
-#' @example
-#'
-#' result_logs <- klasifikasi::logs(
+#' @examples
+#' result_logs <- logs(
 #'   "publicId",
 #'   clients_data[["publicId"]],
 #'   "2020-12-15T00:00:00+0700",

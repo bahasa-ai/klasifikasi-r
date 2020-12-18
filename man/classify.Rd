@@ -19,3 +19,10 @@ list of tag result
 \description{
 Get classifying result from a model
 }
+\examples{
+result <- classify(
+  "publicId",
+  clients_data[["publicId"]],
+  "query")
+
+}

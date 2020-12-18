@@ -23,6 +23,10 @@ logs(
 
 \item{ended_at}{Date with 8601 format}
 
+\item{skip}{skip n data from DB}
+
+\item{take}{take n data from DB}
+
 \item{cfg}{list of package options, created by created by [config()]}
 }
 \value{
@@ -30,4 +34,13 @@ list of model logs
 }
 \description{
 Get logs from a model
+}
+\examples{
+result_logs <- logs(
+  "publicId",
+  clients_data[["publicId"]],
+  "2020-12-15T00:00:00+0700",
+  "2020-12-20T00:00:00+0700",
+  take = 5,
+  skip = 0)
 }

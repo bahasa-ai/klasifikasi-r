@@ -17,3 +17,15 @@ List of client_data, client_auth & client_model with publicId key
 \description{
 Retrieve client token & client model data
 }
+\examples{
+clients_data <-build(clients_data = list(
+  list(
+    client_id = "client-id-1",
+    client_secret = "client-secret-1"
+  ),
+  list(
+    client_id = "client-id-2",
+    client_secret = "client-secret-2"
+  )
+))
+}
