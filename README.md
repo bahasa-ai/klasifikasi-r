@@ -76,6 +76,25 @@ result_logs <- klasifikasi::logs(
   ended_at = "2020-12-20T00:00:00+0700",
   take = 5,
   skip = 0)
+
+#' result_logs will be look like this
+#' result_logs: List of 2
+#' ..$ histories: List of n
+#' ....$: List of 6
+#' ......$ createdAt: chr "datestring"
+#' ......$ updatedAt: chr "datestring"
+#' ......$ deletedAt: chr "datestring"
+#' ......$ id: int 1
+#' ......$ query: chr "query"
+#' ......$ modelResult: List of 2
+#' ........$ :List of 2
+#' ..........$ label: chr "tag 1"
+#' ..........$ score: num 0.551
+#' ........$ :List of 
+#' ..........$ label: chr "tag 2"
+#' ..........$ score: num 0.23
+#' ....$: List of 6
+#' ..$ length: int n 
 ```
 `started_at` & `ended_at` param is mandatory but `skip` & `take`  is optional. Please note, `started_at` & `ended_at` param must be a valid date string (We recommend using ISO 8601 Format)
 
