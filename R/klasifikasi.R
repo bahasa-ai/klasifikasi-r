@@ -72,3 +72,41 @@ classify <- function (public_id, client_list, query, cfg = config()) {
 
   return(classifying_result_response$body$result)
 }
+
+#' Logs a model
+#'
+#' Get logs from a model
+#' @param public_id public id of a model, you can get it from your model page in klasifikasi webapp
+#' @param client_list client list from a model, you can get it from [build()[['publicId']]]
+#' @param cfg list of package options, created by created by [config()]
+#' @param started_at Date with 8601 format
+#' @param ended_at Date with 8601 format
+#' @param skip
+#' @param take
+#' @export
+#' @return list of model logs
+#'
+#'
+logs <- function (public_id, client_list, started_at, ended_at, skip = 0, take = 10, cfg = config()) {
+  if (is.null(client_list)) {
+    stop("client list cant be null !")
+  } else if (is.null(started_at) || is.null(ended_at)) {
+    stop("started_at & ended_at cant be null !")
+  } else if (!is.character(started_at) || !is.character(ended_at)) {
+    stop("started_at & ended_at must be a character (Date with 8601 Format) !")
+  }
+
+  query <- list(
+    startedAt = started_at,
+    endedAt = ended_at,
+    skip = skip,
+    take = take
+  )
+  logs_response = get_logs(client_list$client_auth$token, public_id, query, cfg)
+  if (logs_response$code != 200) {
+    stop(logs_response$body$error)
+  }
+
+  return(logs_response$body)
+
+}
