@@ -40,3 +40,26 @@ get_model_data <- function (client_token, cfg) {
 
   return (list(body = response_body, code = response_code))
 }
+
+#' Get classify result
+#'
+#' Use this function to get classifying result
+#' @param client_token client token, created by [build()[['publicId']]$client_auth$token]
+#' @param public_id public id model
+#' @param query query
+#' @cfg list of package options, created by [config()]
+#' @export
+#'
+get_classifying_result <- function(client_token, public_id, query, cfg) {
+  url <- cfg['url']
+  fullUrl <- paste(url, "/api/v1/classify/", public_id, sep = "")
+  auth <- paste("Bearer", client_token, sep=" ")
+  req_body <- list(query = query)
+
+  r <- httr::POST(url = fullUrl, httr::add_headers(Authorization = auth), body = req_body,encode = "json")
+
+  response_body <- httr::content(r, "parsed")
+  response_code <- httr::status_code(r)
+
+  return (list( body = response_body, code = response_code ))
+}
