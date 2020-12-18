@@ -32,7 +32,7 @@ build <- function(clients_data, cfg = config()) {
     }
 
     client_model_response = get_model_data(client_token_response$body, cfg)
-    if (client_token_response$code != 200) {
+    if (client_model_response$code != 200) {
       stop(client_model_response$body$error)
     } else if (!exists('model', client_model_response$body)) {
       stop("Client didnt have any model !")
