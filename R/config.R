@@ -1,4 +1,6 @@
 #' Set package options
+#'
+#' @param config_list list of package config
 #' @export
 config <- function (config_list=NULL) {
   cfg = list(

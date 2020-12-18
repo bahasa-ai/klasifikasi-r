@@ -58,6 +58,8 @@ build <- function(clients_data, cfg = config()) {
 #' @export
 #' @return list of tag result
 #'
+#' @example
+#' result <- classify('publicId', clients_data[["publicId"]], "query")
 #'
 classify <- function (public_id, client_list, query, cfg = config()) {
   if (is.null(client_list)) {
@@ -86,7 +88,16 @@ classify <- function (public_id, client_list, query, cfg = config()) {
 #' @export
 #' @return list of model logs
 #'
+#' @example
 #'
+#' result_logs <- klasifikasi::logs(
+#'   "publicId",
+#'   clients_data[["publicId"]],
+#'   "2020-12-15T00:00:00+0700",
+#'   "2020-12-20T00:00:00+0700",
+#'   take = 5,
+#'   skip = 0)
+
 logs <- function (public_id, client_list, started_at, ended_at, skip = 0, take = 10, cfg = config()) {
   if (is.null(client_list)) {
     stop("client list cant be null !")
